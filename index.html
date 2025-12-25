@@ -57,18 +57,19 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 60px rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .glass-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 80px rgba(255, 255, 255, 0.08);
         }
 
         .clock-section {
@@ -561,11 +562,13 @@
     </div>
 
     <div class="container">
+        <!-- Clock Section -->
         <div class="glass-card clock-section">
             <div class="time" id="time">00:00:00</div>
             <div class="date" id="date">Montag, 1. Januar 2024</div>
         </div>
 
+        <!-- Motivational Quote Section -->
         <div class="glass-card" style="text-align: center;">
             <h2><span class="icon">💫</span> Tägliche Motivation</h2>
             <div id="quoteContent">
@@ -573,6 +576,7 @@
             </div>
         </div>
 
+        <!-- Weather Section -->
         <div class="glass-card" style="text-align: center;">
             <h2><span class="icon">🌤️</span> Wetter</h2>
             <div id="weatherContent">
@@ -580,9 +584,9 @@
             </div>
         </div>
 
-    
+        <!-- Grid Layout for Tasks and Goals -->
         <div class="grid">
-        
+            <!-- To-Do List Section -->
             <div class="glass-card">
                 <h2><span class="icon">✓</span> To-Do Liste</h2>
                 <div class="input-group">
@@ -603,6 +607,7 @@
                 </div>
             </div>
 
+            <!-- Daily Goals Section -->
             <div class="glass-card">
                 <h2><span class="icon">🎯</span> Daily Goals</h2>
                 <div class="input-group">
@@ -645,8 +650,16 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        let tasks = [];
-        let goals = [];
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        let goals = JSON.parse(localStorage.getItem('goals')) || [];
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function saveGoals() {
+            localStorage.setItem('goals', JSON.stringify(goals));
+        }
 
         function addTask() {
             const input = document.getElementById('taskInput');
@@ -654,17 +667,20 @@
             if (text) {
                 tasks.push({ text, completed: false });
                 input.value = '';
+                saveTasks();
                 renderTasks();
             }
         }
 
         function toggleTask(index) {
             tasks[index].completed = !tasks[index].completed;
+            saveTasks();
             renderTasks();
         }
 
         function deleteTask(index) {
             tasks.splice(index, 1);
+            saveTasks();
             renderTasks();
         }
 
@@ -693,17 +709,20 @@
             if (text) {
                 goals.push({ text, completed: false });
                 input.value = '';
+                saveGoals();
                 renderGoals();
             }
         }
 
         function toggleGoal(index) {
             goals[index].completed = !goals[index].completed;
+            saveGoals();
             renderGoals();
         }
 
         function deleteGoal(index) {
             goals.splice(index, 1);
+            saveGoals();
             renderGoals();
         }
 
