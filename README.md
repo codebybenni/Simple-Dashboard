@@ -5,11 +5,10 @@ Mein erstes Projekt.
 ## Funktionen
 - Stylische Uhrzeit-Anzeige
 - Interaktive To-Do Liste
-- Modernes Dark-Mode Design
+- Modernes Dark-Mode Design mit schönen Farbverläufen
 - Wetteranzeige
-- motivierende Sprüche 
+- motivierende Sprüche
 
 ## Tools
 - **Cursor** (AI Code Editor)
-- **Claude** (AI Unterstützung)
 - **GitHub Pages** (Hosting)
