@@ -19,18 +19,55 @@
             position: relative;
             overflow-x: hidden;
             transition: background 0.5s ease;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes gradientFlowAlt {
+            0% { background-position: 100% 0%; }
+            50% { background-position: 0% 100%; }
+            100% { background-position: 100% 0%; }
         }
 
         body.cyberpunk {
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            background: linear-gradient(
+                -45deg,
+                #0a0e27 0%,
+                #1a1f3a 25%,
+                #16213e 50%,
+                #0f3460 75%,
+                rgba(0, 212, 255, 0.15) 100%
+            );
+            animation: gradientFlow 18s ease infinite;
         }
 
         body.minimalist {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: linear-gradient(
+                135deg,
+                #0f0f0f 0%,
+                #1a1a2e 25%,
+                #16213e 50%,
+                #1a1a2e 75%,
+                #2d2d44 100%
+            );
+            animation: gradientFlowAlt 20s ease infinite;
         }
 
         body.forest {
-            background: linear-gradient(135deg, #0d1b0d 0%, #1a2f1a 100%);
+            background: linear-gradient(
+                -45deg,
+                #0d1b0d 0%,
+                #1a2f1a 25%,
+                #14532d 50%,
+                #166534 75%,
+                rgba(74, 222, 128, 0.12) 100%
+            );
+            animation: gradientFlow 16s ease infinite;
         }
 
         .container {
