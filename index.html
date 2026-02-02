@@ -575,9 +575,9 @@
 </head>
 <body class="cyberpunk">
     <div class="theme-switcher">
-        <button class="theme-btn active" onclick="setTheme('cyberpunk')">Cyberpunk</button>
-        <button class="theme-btn" onclick="setTheme('minimalist')">Minimalist</button>
-        <button class="theme-btn" onclick="setTheme('forest')">Forest</button>
+        <button class="theme-btn active" onclick="setTheme('cyberpunk')">🤖 Cyberpunk</button>
+        <button class="theme-btn" onclick="setTheme('minimalist')">⚪ Minimalist</button>
+        <button class="theme-btn" onclick="setTheme('forest')">🌲 Forest</button>
     </div>
 
     <div class="container">
@@ -929,7 +929,7 @@
         const savedTheme = localStorage.getItem('dashboardTheme') || 'cyberpunk';
         document.body.className = savedTheme;
         document.querySelectorAll('.theme-btn').forEach(btn => {
-            if (btn.textContent.toLowerCase() === savedTheme) {
+            if (btn.textContent.toLowerCase().includes(savedTheme)) {
                 btn.classList.add('active');
             } else {
                 btn.classList.remove('active');
